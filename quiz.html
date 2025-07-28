@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Your Purrfect Pet</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="quiz.html">QUIZ</a></li>
+                    <li><a href="pets.html">PETS</a></li>
+                    <li><a href="adopt.html">ADOPT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    </section>
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf5;
+      color: #333;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a7535;
+    }
+
+    .question {
+      margin-bottom: 1.5rem;
+    }
+
+    .question h3 {
+      color: #444;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #f77f00;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #e86c00;
+    }
+
+    #result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #5a7535;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Find Your Furry Match</h1>
+
+  <form id="quizForm">
+    <div class="question">
+      <h3>1. What’s your ideal weekend?</h3>
+      <label><input type="radio" name="q1" value="fish"> Hiking or going on adventures</label>
+      <label><input type="radio" name="q1" value="mama"> Relaxing at home with a book</label>
+      <label><input type="radio" name="q1" value="beans"> Exploring something new</label>
+      <label><input type="radio" name="q1" value="biscuit"> Watching old movies and napping</label>
+    </div>
+
+    <div class="question">
+      <h3>2. Pick a snack:</h3>
+      <label><input type="radio" name="q2" value="fish"> A big juicy burger</label>
+      <label><input type="radio" name="q2" value="mama"> Herbal tea and crackers</label>
+      <label><input type="radio" name="q2" value="beans"> Sour gummies</label>
+      <label><input type="radio" name="q2" value="biscuit"> Mashed potatoes</label>
+    </div>
+
+    <div class="question">
+      <h3>3. Your social style is:</h3>
+      <label><input type="radio" name="q3" value="fish"> Outgoing and goofy</label>
+      <label><input type="radio" name="q3" value="mama"> Observant and thoughtful</label>
+      <label><input type="radio" name="q3" value="beans"> Bubbly and spontaneous</label>
+      <label><input type="radio" name="q3" value="biscuit"> Warm and gentle</label>
+    </div>
+
+    <div class="question">
+      <h3>4. What best describes your energy level?</h3>
+      <label><input type="radio" name="q4" value="fish"> High — always moving!</label>
+      <label><input type="radio" name="q4" value="mama"> Low-key and steady</label>
+      <label><input type="radio" name="q4" value="beans"> Playful bursts</label>
+      <label><input type="radio" name="q4" value="biscuit"> Calm and relaxed</label>
+    </div>
+
+    <div class="question">
+      <h3>5. What’s your favorite place at home?</h3>
+      <label><input type="radio" name="q5" value="fish"> Backyard or garage</label>
+      <label><input type="radio" name="q5" value="mama"> Window seat or bookshelf corner</label>
+      <label><input type="radio" name="q5" value="beans"> Everywhere! I move a lot</label>
+      <label><input type="radio" name="q5" value="biscuit"> Cozy spot on the couch</label>
+    </div>
+
+    <div class="question">
+      <h3>6. Pick a toy:</h3>
+      <label><input type="radio" name="q6" value="fish"> Tennis ball</label>
+      <label><input type="radio" name="q6" value="mama"> Feather wand</label>
+      <label><input type="radio" name="q6" value="beans"> Jingly ball</label>
+      <label><input type="radio" name="q6" value="biscuit"> Soft plush</label>
+    </div>
+
+    <button type="button" onclick="calculateResult()">See My Match</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateResult() {
+      const scores = { fish: 0, mama: 0, beans: 0, biscuit: 0 };
+      for (let i = 1; i <= 6; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) scores[answer.value]++;
+      }
+      const maxScore = Math.max(...Object.values(scores));
+      const topPets = Object.keys(scores).filter(key => scores[key] === maxScore);
+      const match = topPets[Math.floor(Math.random() * topPets.length)];
+      const descriptions = {
+        fish: "🐶 <strong>Fish Stick Jones</strong>: Goofy, energetic, and always ready for fun. The perfect buddy for someone who loves to stay active!",
+        mama: "🐱 <strong>Mama Jones</strong>: Calm, wise, and full of affection. She’ll be your cozy, quiet companion for every season.",
+        beans: "🐾 <strong>Beans</strong>: A curious and playful kitten with energy to spare. Great for households who love excitement.",
+        biscuit: "🦴 <strong>Biscuit</strong>: Gentle and loyal. A mellow senior pup who’s all about long naps and big cuddles."
+      };
+      document.getElementById('result').innerHTML = descriptions[match];
+    }
+  </script>
+<!-------- footer ---------->
+
+<section class="footer">
+        <h4>Thanks for stopping by!</h4>
+        <p>This site was made with love (and a few paw prints) to help connect pets with their forever homes. Questions or feedback? I’d love to hear from you!</p>
+        <div class="icons">
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+            <a href=""><i class="fa fa-linkedin"></i></a>
+
+        </div>
+</section>    
+  
+  
+<!----JavaScript for toggle menu---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script> 
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Your Purrfect Pet</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<style>
+/* Add some spacing and max-width for the about text */
+.about-content {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    color: #333;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+@media (max-width: 900px) {
+    .about-content {
+        padding: 18px 8px;
+    }
+}
+</style>
+</head>
+<body>
+    <section class="sub-header">
+        
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="quiz.html">QUIZ</a></li>
+                    <li><a href="pets.html">PETS</a></li>
+                    <li><a href="adopt.html">ADOPT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <div class="text-box">
+             <h1>About This Site</h1> 
+        </div>
+    </section>
+
+    <div class="about-content">
+        <p>
+            Welcome to my pet adoption match website! My name is Ashlynn, and I created this site to make the pet adoption process more fun, friendly, and personal. Whether you're a first-time pet owner or a lifelong animal lover, I hope this site helps you discover the perfect furry companion.
+        </p>
+        <p>
+            <b>At the heart of this project is a simple idea:</b> adoption should be a joy — not a guessing game. That’s why I built a personality quiz to help match you with a pet whose traits fit your lifestyle. Every pet is unique, and by getting to know yourself a little better, you just might find your perfect four-legged match.
+        </p>
+        <p>
+            This site is part of my coursework for the SET08101 Web Technologies module at Edinburgh Napier University. It was designed and developed entirely by me using HTML, CSS, and JavaScript, with a lot of care and a little help from some imaginary pets like Fish Stick Jones and Mama Jones.
+        </p>
+    </div>
+
+    <!-- footer -->
+    <section class="footer">
+        <h4>Thanks for stopping by!</h4>
+        <p>This site was made with love (and a few paw prints) to help connect pets with their forever homes. Questions or feedback? I’d love to hear from you!</p>
+        <div class="icons">
+            <a href=""><i class="fa fa-facebook"></i></a>
+            <a href=""><i class="fa fa-twitter"></i></a>
+            <a href=""><i class="fa fa-instagram"></i></a>
+            <a href=""><i class="fa fa-linkedin"></i></a>
+        </div>
+    </section>    
+  
+    <!-- JavaScript for toggle menu -->
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script> 
+    
+</body>
+</html>
